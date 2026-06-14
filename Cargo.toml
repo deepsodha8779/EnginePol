@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "engine-core",
+    "http-gateway",
+    "domain",
+    "tests",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+

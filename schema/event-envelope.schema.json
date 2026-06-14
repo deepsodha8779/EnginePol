@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tadpole.dev/schemas/event-envelope.schema.json",
+  "title": "Tadpole Event Envelope",
+  "description": "Canonical wrapper for all events entering Tadpole.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["head", "body"],
+  "properties": {
+    "head": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "event_name",
+        "event_category",
+        "tenant_id",
+        "external_dependency_id"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "Monotonic ULID for the event.",
+          "pattern": "^[0-9A-HJ-NP-TV-Z]{26}$"
+        },
+        "event_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Domain-specific event name."
+        },
+        "event_category": {
+          "type": "string",
+          "minLength": 1,
+          "description": "High-level event category.",
+          "enum": ["Transaction", "TimeDriven", "GovernanceConclusion"]
+        },
+        "tenant_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Tenant identifier."
+        },
+        "correlation_id": {
+          "type": "string",
+          "description": "Trace/parent correlation id, if any.",
+          "pattern": "^[0-9A-HJ-NP-TV-Z]{26}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "description": "Causation id for derived events, if any.",
+          "pattern": "^[0-9A-HJ-NP-TV-Z]{26}$"
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the event occurred (ISO-8601)."
+        },
+        "originating_function": {
+          "type": "string",
+          "description": "Function that produced the event."
+        },
+        "originating_application": {
+          "type": "string",
+          "description": "Application that produced the event."
+        },
+        "environment": {
+          "type": "string",
+          "description": "Environment tag (e.g., prd)."
+        },
+        "external_dependency_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "External dependency anchor for governance scope."
+        },
+        "changed_object_type": {
+          "type": "string",
+          "description": "Type of changed object, if applicable."
+        },
+        "changed_object_id": {
+          "type": "string",
+          "description": "Identifier of changed object, if applicable."
+        },
+        "change_kind": {
+          "type": "string",
+          "description": "Kind of change (created/updated/deleted), if applicable.",
+          "enum": ["created", "updated", "deleted"]
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "description": "Arbitrary payload for the event.",
+      "additionalProperties": true
+    }
+  }
+}

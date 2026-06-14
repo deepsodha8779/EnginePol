@@ -1,0 +1,185 @@
+[
+  {
+    "template_id": "01TMPL00000000000000001",
+    "tenant_id": "tenant-a",
+    "name": "Invoice Governance Review",
+    "description": "Triggered when invoice validation rules fail. Assigns to Compliance Officer with 48h escalation.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_FAILED",
+      "object_type": "Invoice",
+      "execution_mode": "MANUAL"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Compliance Officer",
+      "escalation_duration": 48,
+      "escalation_duration_unit": "HOURS"
+    },
+    "evidence": {
+      "require_document_upload": true,
+      "require_comment": true,
+      "require_approval_reference": false
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  },
+  {
+    "template_id": "01TMPL00000000000000002",
+    "tenant_id": "tenant-a",
+    "name": "Contract Compliance Confirmation",
+    "description": "Triggered when contract rules pass. Records confirmation automatically.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_PASSED",
+      "object_type": "Contract",
+      "execution_mode": "AUTOMATIC"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Procurement Lead",
+      "escalation_duration": null,
+      "escalation_duration_unit": null
+    },
+    "evidence": {
+      "require_document_upload": false,
+      "require_comment": false,
+      "require_approval_reference": false
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  },
+  {
+    "template_id": "01TMPL00000000000000003",
+    "tenant_id": "tenant-a",
+    "name": "Supplier Inconclusive Review",
+    "description": "Triggered when supplier rules return inconclusive. Requires approval before proceeding.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_INCONCLUSIVE",
+      "object_type": "Supplier",
+      "execution_mode": "APPROVAL_REQUIRED"
+    },
+    "responsibility": {
+      "responsible_user": "user-john-doe",
+      "responsible_role": "Accounts Payable Manager",
+      "escalation_duration": 5,
+      "escalation_duration_unit": "DAYS"
+    },
+    "evidence": {
+      "require_document_upload": true,
+      "require_comment": true,
+      "require_approval_reference": true
+    },
+    "associated_rule_ids": ["rule-supplier-kyc", "rule-supplier-sanctions"],
+    "associated_playbook_ids": ["playbook-supplier-onboarding"]
+  },
+  {
+    "_comment": "--- SLA rule-level binding examples below ---",
+    "template_id": "tmpl_notify_desk",
+    "tenant_id": "tenant-a",
+    "name": "Notify Service Desk Manager",
+    "description": "Bound to sla.response_time rule. Notifies desk manager when SLA response time is breached.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_FAILED",
+      "object_type": "SLA",
+      "execution_mode": "AUTOMATIC"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Service Desk Manager",
+      "escalation_duration": 4,
+      "escalation_duration_unit": "HOURS"
+    },
+    "evidence": {
+      "require_document_upload": false,
+      "require_comment": true,
+      "require_approval_reference": false
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  },
+  {
+    "template_id": "tmpl_escalate_ops",
+    "tenant_id": "tenant-a",
+    "name": "Escalate to Ops Lead",
+    "description": "Bound to sla.resolution_time rule. Escalates when SLA resolution deadline is missed.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_FAILED",
+      "object_type": "SLA",
+      "execution_mode": "MANUAL"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Operations Lead",
+      "escalation_duration": 24,
+      "escalation_duration_unit": "HOURS"
+    },
+    "evidence": {
+      "require_document_upload": true,
+      "require_comment": true,
+      "require_approval_reference": false
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  },
+  {
+    "template_id": "tmpl_request_docs",
+    "tenant_id": "tenant-a",
+    "name": "Request Documentation from Agent",
+    "description": "Bound to sla.documentation rule. Requests escalation docs when not provided.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_FAILED",
+      "object_type": "SLA",
+      "execution_mode": "MANUAL"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Assigned Agent",
+      "escalation_duration": 48,
+      "escalation_duration_unit": "HOURS"
+    },
+    "evidence": {
+      "require_document_upload": true,
+      "require_comment": true,
+      "require_approval_reference": false
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  },
+  {
+    "template_id": "tmpl_approval_reminder",
+    "tenant_id": "tenant-a",
+    "name": "Send Approval Reminder",
+    "description": "Bound to sla.approval rule. Reminds manager to approve when approval is missing.",
+    "version": 1,
+    "status": "ACTIVE",
+    "trigger": {
+      "event_type": "RULE_FAILED",
+      "object_type": "SLA",
+      "execution_mode": "AUTOMATIC"
+    },
+    "responsibility": {
+      "responsible_user": null,
+      "responsible_role": "Approving Manager",
+      "escalation_duration": 12,
+      "escalation_duration_unit": "HOURS"
+    },
+    "evidence": {
+      "require_document_upload": false,
+      "require_comment": false,
+      "require_approval_reference": true
+    },
+    "associated_rule_ids": [],
+    "associated_playbook_ids": []
+  }
+]

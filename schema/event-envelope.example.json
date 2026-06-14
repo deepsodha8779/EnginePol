@@ -1,0 +1,30 @@
+{
+  "head": {
+    "event_id": "01JFNKM0Y7Q0ZJ9W8YH5ARV0FQ",
+    "event_name": "InvoiceReceivedForExternalDependency",
+    "event_category": "Transaction",
+    "tenant_id": "acme-corp",
+    "correlation_id": "01KHE53T6H1D5EKT0ZREPTNPEN",
+    "causation_id": "01J0M8Y4Z5Q8K3B9F4R6H2D9XA",
+    "occurred_at": "2024-11-05T12:34:56Z",
+    "originating_function": "Finance",
+    "originating_application": "AccountingIntegration",
+    "environment": "prd",
+    "external_dependency_id": "01J0M8WZ9K7F6R5T4P3Q2N1M0",
+    "changed_object_type": "Invoice",
+    "changed_object_id": "01J0M8Y8A4D5F6G7H8J9KLMNO",
+    "change_kind": "created"
+  },
+  "body": {
+    "snapshots": {
+      "invoice": {
+        "object_id": "01J0M8Y8A4D5F6G7H8J9KLMNO",
+        "supplier_reference": "SUP-UNKNOWN-7781",
+        "amount": 12500,
+        "currency": "EUR",
+        "invoice_date": "2026-01-05",
+        "contract_reference": null
+      }
+    }
+  }
+}

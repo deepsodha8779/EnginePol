@@ -1,0 +1,26 @@
+{
+  "tenant-a:TASK_GOVERNANCE_REVIEW": {
+    "type": "team",
+    "id": "team-governance-eu",
+    "display_name": "Governance Team EU",
+    "notification_channels": ["email", "teams"]
+  },
+  "TASK_GOVERNANCE_REVIEW": {
+    "type": "queue",
+    "id": "default-governance-queue",
+    "display_name": null,
+    "notification_channels": ["email"]
+  },
+  "Compliance Officer": {
+    "type": "team",
+    "id": "team-compliance",
+    "display_name": "Compliance Team",
+    "notification_channels": ["email", "teams"]
+  },
+  "tenant-a:Compliance Officer": {
+    "type": "team",
+    "id": "team-compliance-eu",
+    "display_name": "Compliance Team EU",
+    "notification_channels": ["email", "teams"]
+  }
+}

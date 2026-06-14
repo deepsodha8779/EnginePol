@@ -1,0 +1,16 @@
+[package]
+name = "tadpole-tests"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+actix = "0.13"
+actix-rt = "2"
+actix-web = "4"
+async-trait = "0.1"
+engine-core = { path = "../engine-core" }
+domain = { path = "../domain" }
+http-gateway = { path = "../http-gateway" }
+mongodb = { version = "2.8", default-features = false, features = ["tokio-runtime"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["rt", "macros"] }

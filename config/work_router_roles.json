@@ -1,0 +1,26 @@
+{
+  "01KHT2VMBF2M3HZEMFMHB450JN:TASK_GOVERNANCE_REVIEW": {
+    "type": "team",
+    "id": "team-governance",
+    "display_name": "Governance Team",
+    "notification_channels": ["email", "teams"]
+  },
+  "TASK_GOVERNANCE_REVIEW": {
+    "type": "queue",
+    "id": "default-governance-queue",
+    "display_name": "Default Governance Queue",
+    "notification_channels": ["email"]
+  },
+  "Compliance Officer": {
+    "type": "team",
+    "id": "team-compliance",
+    "display_name": "Compliance Team",
+    "notification_channels": ["email", "teams"]
+  },
+  "default": {
+    "type": "queue",
+    "id": "default-governance-queue",
+    "display_name": "Default Queue",
+    "notification_channels": ["email"]
+  }
+}

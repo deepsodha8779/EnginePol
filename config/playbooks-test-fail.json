@@ -1,0 +1,20 @@
+{
+  "codex": [
+    {
+      "version_id": "v1",
+      "playbooks": [
+        {
+          "id": "playbook.invoice_test_fail",
+          "match_expr": "event_name == \"InvoiceReceivedForExternalDependency\"",
+          "rules": [
+            {
+              "id": "rule.always_fail",
+              "kind": "boolean",
+              "expr": "tenant_id == \"will-not-match\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

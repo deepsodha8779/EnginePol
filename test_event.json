@@ -1,0 +1,27 @@
+{
+    "head": {
+      "event_id": "01JV4G5AAAAAAAAAAAAAAAAAA2",
+      "event_name": "ContractCreated",
+      "event_category": "Transaction",
+      "tenant_id": "acme",
+      "correlation_id": null,
+      "causation_id": null,
+      "occurred_at": "2024-11-05T12:34:56Z",
+      "originating_function": "Finance",
+      "originating_application": "AccountingIntegration",
+      "environment": "prd",
+      "external_dependency_id": "dep_123",
+      "changed_object_type": "Contract",
+      "changed_object_id": "ctr_999",
+      "change_kind": "created"
+    },
+    "body": {
+      "snapshots": {
+        "contract": {
+          "object_id": "ctr_999",
+          "contract_termination_notice_days": 30,
+          "contract_currency": "USD"
+        }
+      }
+    }
+  }
